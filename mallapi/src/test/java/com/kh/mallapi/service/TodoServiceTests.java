@@ -26,9 +26,9 @@ public class TodoServiceTests {
 		log.info("TNO: " + tno);
 	}
 
-	// @Test
+	 @Test
 	public void testGet() {
-		Long tno = 101L;
+		Long tno = 21L;
 		TodoDTO todoDTO = todoService.get(tno);
 		log.info(todoDTO);
 	}
@@ -49,7 +49,7 @@ public class TodoServiceTests {
 
 	}
 
-	@Test
+	//@Test
 	public void testList() {
 		PageRequestDTO pageRequestDTO = PageRequestDTO.builder().page(2).size(10).build();
 		PageResponseDTO<TodoDTO> response = todoService.list(pageRequestDTO);
