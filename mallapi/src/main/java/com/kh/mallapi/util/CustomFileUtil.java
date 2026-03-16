@@ -45,10 +45,7 @@ public class CustomFileUtil {
 
 	// 사용자가보내준 리스트파일들을 내장폴더에 중복되지않는 이름으로 변경해서 저장하고, 파일명들을 리스트에 저장해서 리턴한다.
 	public List<String> saveFiles(List<MultipartFile> files) throws RuntimeException {
-		// size() == 0 대신 isEmpty() 권장
-		if (files == null || files.isEmpty()) {
-			return null;
-		}
+		
 
 		// 절대중복되지않는 파일명을 만들어서 저장리스트
 		List<String> uploadNames = new ArrayList<>();
@@ -76,6 +73,12 @@ public class CustomFileUtil {
 				uploadNames.add(savedName);
 			} catch (IOException e) {
 				throw new RuntimeException("File save error: " + e.getMessage());
+			}
+			
+			// size() == 0 대신 isEmpty() 권장
+			if (files == null || files.isEmpty()) {
+				uploadNames.add("default.jpg");
+				return uploadNames;
 			}
 		}
 		return uploadNames;
